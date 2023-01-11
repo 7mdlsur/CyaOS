@@ -1,9 +1,9 @@
 ESPACIO equ 0x7e00
 
 Leer:
-  mov al,0x02
+  mov ah,0x02
   mov bx, ESPACIO
-  mov al,4
+  mov al,2
   mov dl,[BOOT_D] 
   mov ch,0x00
   mov dh,0x00
