@@ -45,10 +45,13 @@ IniciarModoProtegido:
     call codeseg:iniciar64bit
     
 [bits 64]
+
+[extern _iniciar]
 iniciar64bit:
     mov edi, 0xb8000
     mov rax, 0x1f201f201f201f20
     mov ecx, 500 
     rep stosq 
+    call _iniciar
     jmp $ 
 times 2048-($-$$) db 0
