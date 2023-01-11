@@ -31,9 +31,9 @@ IniciarModoProtegido:
     mov gs,ax
 
     mov [0xb8000],byte 'H'
-    mov [0xb8000],byte 'o'
-    mov [0xb8000],byte 'l'
-    mov [0xb8000],byte 'a'
+    mov [0xb8002],byte 'o'
+    mov [0xb8004],byte 'l'
+    mov [0xb8006],byte 'a'
 
     jmp $
     
