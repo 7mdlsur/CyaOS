@@ -1,4 +1,4 @@
 extern "C" void _iniciar(){
-    int* ptr =(int*)8xb000;
+    int* ptr =(int*)0xb8000;
     return ;
 }
