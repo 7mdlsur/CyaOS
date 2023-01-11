@@ -2,8 +2,8 @@
 
 jmp entrarModoProtegido
 
-%include "imprimir.asm"
-%include "gdt.asm"
+
+
 entrarModoProtegido:
     call EnableA20
     cli 
@@ -20,6 +20,11 @@ EnableA20:
     ret 
     
 [bits 32]
+
+%include "imprimir.asm"
+%include "gdt.asm"
+%include "CPUID.asm"
+%include "paging.asm"
 IniciarModoProtegido:
     mov ax, dataseg
     mov ds, ax
@@ -32,8 +37,18 @@ IniciarModoProtegido:
     mov [0xb8002],byte 'o'
     mov [0xb8004],byte 'l'
     mov [0xb8006],byte 'a'
-
-    jmp $
     
-
+    call DetectarCPUID
+    call DetectarLongMode
+    call correrPaging
+    call EditarGdt
+    call codeseg:iniciar64bit
+    
+[bits 64]
+iniciar64bit:
+    mov edi, 0xb8000
+    mov rax, 0x1f201f201f201f20
+    mov ecx, 500 
+    rep stosq 
+    jmp $ 
 times 2048-($-$$) db 0
