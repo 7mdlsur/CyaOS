@@ -1,3 +1,3 @@
 # CyaOS
 
-small operating system testing
+small 64bit operating system testing
