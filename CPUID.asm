@@ -10,7 +10,6 @@ DetectarCPUID:
    popfd 
 
    pushfd 
-
    pop eax 
 
    push ecx 
@@ -32,5 +31,5 @@ NoLong:
    hlt
 
 NoCPUID:
-     hlt 
+  hlt 
     

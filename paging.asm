@@ -5,6 +5,8 @@ correrPaging:
   mov cr3,edi 
   mov dword[edi], 0x1003
   add edi,0x1000
+  mov dword[edi],0x2003
+  add edi,0x1000
   mov dword[edi],0x3003
   add edi,0x1000
 
@@ -21,7 +23,7 @@ correrPaging:
    or eax,1 << 5
    mov cr4,eax 
 
-   mov ecx,0xC0000000
+   mov ecx,0xC0000080
    rdmsr
    or eax,1 << 8
    wrmsr 
